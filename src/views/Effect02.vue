@@ -5,6 +5,10 @@ import { main } from '@/assets/js/data.js'
 </script>
 
 <template>
+<!-- 
+    한페이지로 만들었을 경우
+    최대한 길게 풀어썼을 경우
+ -->
     <div class="parallax_scroll">scrollTop() : <span>0</span>px</div>
     <div class="parallax_information">
         <ul>
