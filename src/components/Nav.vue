@@ -1,0 +1,175 @@
+<template>
+    <nav class="parallax_nav">
+        <ul>
+            <li :class="{ active: isActive1 }"><a href="#article1" v-smooth-scroll>s1</a></li>
+            <li :class="{ active: isActive2 }"><a href="#article2" v-smooth-scroll>s2</a></li>
+            <li :class="{ active: isActive3 }"><a href="#article3" v-smooth-scroll>s3</a></li>
+            <li :class="{ active: isActive4 }"><a href="#article4" v-smooth-scroll>s4</a></li>
+            <li :class="{ active: isActive5 }"><a href="#article5" v-smooth-scroll>s5</a></li>
+            <li :class="{ active: isActive6 }"><a href="#article6" v-smooth-scroll>s6</a></li>
+            <li :class="{ active: isActive7 }"><a href="#article7" v-smooth-scroll>s7</a></li>
+            <li :class="{ active: isActive8 }"><a href="#article8" v-smooth-scroll>s8</a></li>
+            <li :class="{ active: isActive9 }"><a href="#article9" v-smooth-scroll>s9</a></li>
+        </ul>
+    </nav>
+</template>
+
+<script>
+
+export default {
+    data() {
+        return {
+            isActive1: true,
+            isActive2: false,
+            isActive3: false,
+            isActive4: false,
+            isActive5: false,
+            isActive6: false,
+            isActive7: false,
+            isActive8: false,
+            isActive9: false
+        }
+    },
+    created() {
+    },
+    mounted() {
+        window.addEventListener("scroll", this.onScroll);
+    },
+    updated() {
+    },
+    beforeDestroy () {
+       window.removeEventListener('scroll', this.onScroll)
+    },
+    methods: {
+        onScroll () {
+            // console.log('스크롤중');
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+            if (currentScrollPosition < 0) {
+                return
+            }
+            
+            if(currentScrollPosition <= parseInt(document.getElementById("article1").offsetTop)) {
+                this.isActive1 = true;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article2").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = true;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article3").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = true;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article4").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = true;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article5").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = true;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article6").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = true;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article7").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = true;
+                this.isActive8 = false;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article8").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = true;
+                this.isActive9 = false;
+            } else if(currentScrollPosition <= parseInt(document.getElementById("article9").offsetTop)) {
+                this.isActive1 = false;
+                this.isActive2 = false;
+                this.isActive3 = false;
+                this.isActive4 = false;
+                this.isActive5 = false;
+                this.isActive6 = false;
+                this.isActive7 = false;
+                this.isActive8 = false;
+                this.isActive9 = true;
+            }
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    a {
+        text-decoration: none;
+        color: #FFF;
+    }
+    .parallax_nav {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+        > ul {
+            display: flex;
+            padding: 20px;
+            border-radius: 100px;
+            background-color: #D2D2D2;
+            > li {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 50%;
+                margin-right: 10px;
+                font-size: 16px;
+                font-weight: 700;
+            }
+            .active { background-color: #FFF; a { color: #222; } }
+        }
+    }
+</style>

@@ -1,105 +1,26 @@
 <script setup>
 import Header from '@components/Main/Header.vue'
+import { main } from '@/assets/js/data.js'
 
 </script>
 
 <template>
     <Header :headerTitle="headerTitle" />
     <section id="parallax_contents">
-        <article id="article1" class="content_item">
-            <span class="content_item_num">01</span>
-            <h2 class="content_item_title">Section1</h2>
+        <article :id="'article' + (index + 1)" class="content_item" v-for="(item, index) of main" :key="'a' + index">
+            <span class="content_item_num">{{item.num}}</span>
+            <h2 class="content_item_title">{{item.title}}</h2>
             <figure class="content_item_img_wrap">
                 <div class="content_item_img"></div>
             </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
+            <p class="content_item_description">{{item.description}}</p>
         </article>
         <!-- // article1 -->
-
-        <article id="article2" class="content_item">
-            <span class="content_item_num">02</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article2 -->
-
-        <article id="article3" class="content_item">
-            <span class="content_item_num">03</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article3 -->
-
-        <article id="article4" class="content_item">
-            <span class="content_item_num">04</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article4 -->
-
-        <article id="article5" class="content_item">
-            <span class="content_item_num">05</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article5 -->
-
-        <article id="article6" class="content_item">
-            <span class="content_item_num">06</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article6 -->
-
-        <article id="article7" class="content_item">
-            <span class="content_item_num">07</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article7 -->
-
-        <article id="article8" class="content_item">
-            <span class="content_item_num">08</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article8 -->
-
-        <article id="article9" class="content_item">
-            <span class="content_item_num">09</span>
-            <h2 class="content_item_title">Section1</h2>
-            <figure class="content_item_img_wrap">
-                <div class="content_item_img"></div>
-            </figure>
-            <p class="content_item_description">높은 목표를 세우고, 스스로 채찍질 한다.</p>
-        </article>
-        <!-- // article9 -->
-
     </section>
 </template>
 
 <script>
+
 export default {
     data() {
         const headerTitle = {

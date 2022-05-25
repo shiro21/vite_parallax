@@ -5,7 +5,17 @@ const routes = [
         path: '/',
         name: 'Home',
         component: () => import('@views/Main.vue'),
-    }
+    },
+    {
+        path: '/effect01',
+        name: 'Effect01',
+        component: () => import('@views/Effect01.vue'),
+    },
+    {
+        path: '/effect02',
+        name: 'Effect02',
+        component: () => import('@views/Effect02.vue'),
+    },
 ]
 
 const router = createRouter({
