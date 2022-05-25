@@ -1,15 +1,19 @@
+<script setup>
+import main from '@/assets/js/data.js'
+
+</script>
 <template>
     <nav class="parallax_nav">
         <ul>
-            <li :class="{ active: isActive1 }"><a href="#article1" v-smooth-scroll>s1</a></li>
-            <li :class="{ active: isActive2 }"><a href="#article2" v-smooth-scroll>s2</a></li>
-            <li :class="{ active: isActive3 }"><a href="#article3" v-smooth-scroll>s3</a></li>
-            <li :class="{ active: isActive4 }"><a href="#article4" v-smooth-scroll>s4</a></li>
-            <li :class="{ active: isActive5 }"><a href="#article5" v-smooth-scroll>s5</a></li>
-            <li :class="{ active: isActive6 }"><a href="#article6" v-smooth-scroll>s6</a></li>
-            <li :class="{ active: isActive7 }"><a href="#article7" v-smooth-scroll>s7</a></li>
-            <li :class="{ active: isActive8 }"><a href="#article8" v-smooth-scroll>s8</a></li>
-            <li :class="{ active: isActive9 }"><a href="#article9" v-smooth-scroll>s9</a></li>
+            <li :class="{ active: isActive === 1 }"><a href="#article1" v-smooth-scroll>s1</a></li>
+            <li :class="{ active: isActive === 2 }"><a href="#article2" v-smooth-scroll>s2</a></li>
+            <li :class="{ active: isActive === 3 }"><a href="#article3" v-smooth-scroll>s3</a></li>
+            <li :class="{ active: isActive === 4 }"><a href="#article4" v-smooth-scroll>s4</a></li>
+            <li :class="{ active: isActive === 5 }"><a href="#article5" v-smooth-scroll>s5</a></li>
+            <li :class="{ active: isActive === 6 }"><a href="#article6" v-smooth-scroll>s6</a></li>
+            <li :class="{ active: isActive === 7 }"><a href="#article7" v-smooth-scroll>s7</a></li>
+            <li :class="{ active: isActive === 8 }"><a href="#article8" v-smooth-scroll>s8</a></li>
+            <li :class="{ active: isActive === 9 }"><a href="#article9" v-smooth-scroll>s9</a></li>
         </ul>
     </nav>
 </template>
@@ -27,7 +31,8 @@ export default {
             isActive6: false,
             isActive7: false,
             isActive8: false,
-            isActive9: false
+            isActive9: false,
+            isActive: 1
         }
     },
     created() {
@@ -43,102 +48,47 @@ export default {
     methods: {
         onScroll () {
             // console.log('스크롤중');
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             if (currentScrollPosition < 0) {
                 return
             }
-            
-            if(currentScrollPosition <= parseInt(document.getElementById("article1").offsetTop)) {
-                this.isActive1 = true;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article2").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = true;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article3").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = true;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article4").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = true;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article5").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = true;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article6").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = true;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article7").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = true;
-                this.isActive8 = false;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article8").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = true;
-                this.isActive9 = false;
-            } else if(currentScrollPosition <= parseInt(document.getElementById("article9").offsetTop)) {
-                this.isActive1 = false;
-                this.isActive2 = false;
-                this.isActive3 = false;
-                this.isActive4 = false;
-                this.isActive5 = false;
-                this.isActive6 = false;
-                this.isActive7 = false;
-                this.isActive8 = false;
-                this.isActive9 = true;
+
+            // 자바스크립트를 이용한 방법들
+
+            // document.querySelectorAll(".content_item").forEach((el, i) => {
+            //     if(currentScrollPosition >= el.offsetTop - 2) {
+            //         document.querySelectorAll(".parallax_nav ul li").forEach(li => {
+            //             li.classList.remove("active");
+            //         });
+            //         document.querySelector(".parallax_nav ul li:nth-child("+ (i + 1) + ")").classList.add("active");
+            //     }
+            // })
+
+            for(let i = 0; i < main.length; i++) {
+                if(currentScrollPosition <= parseInt(document.getElementById("article"+ (i + 1)).offsetTop)) {
+                    this.isActive = i + 1;
+                    break;
+                }
             }
+            // if(currentScrollPosition <= parseInt(document.getElementById("article1").offsetTop)) {
+            //     this.isActive = 1;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article2").offsetTop)) {
+            //     this.isActive = 2;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article3").offsetTop)) {
+            //     this.isActive = 3;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article4").offsetTop)) {
+            //     this.isActive = 4;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article5").offsetTop)) {
+            //     this.isActive = 5;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article6").offsetTop)) {
+            //     this.isActive = 6;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article7").offsetTop)) {
+            //     this.isActive = 7;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article8").offsetTop)) {
+            //     this.isActive = 8;
+            // } else if(currentScrollPosition <= parseInt(document.getElementById("article9").offsetTop)) {
+            //     this.isActive = 9;
+            // }
         }
     }
 }
