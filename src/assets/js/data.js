@@ -2,47 +2,56 @@ const main = [
     {
         num: '01',
         title: 'Section1',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article1'
     },
     {
         num: '02',
         title: 'Section2',
-        description: '목표를 낮추고 방황하지 않는다.'
+        description: '목표를 낮추고 방황하지 않는다.',
+        href: '#article2'
     },
     {
         num: '03',
         title: 'Section3',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article3'
     },
     {
         num: '04',
         title: 'Section4',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article4'
     },
     {
         num: '05',
         title: 'Section5',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article5'
     },
     {
         num: '06',
         title: 'Section6',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article6'
     },
     {
         num: '07',
         title: 'Section7',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article7'
     },
     {
         num: '08',
         title: 'Section8',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article8'
     },
     {
         num: '09',
         title: 'Section9',
-        description: '높은 목표를 세우고, 스스로 채찍질 한다.'
+        description: '높은 목표를 세우고, 스스로 채찍질 한다.',
+        href: '#article9'
     },
 ]
 
