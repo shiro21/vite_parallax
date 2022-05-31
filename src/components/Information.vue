@@ -76,9 +76,9 @@ export default {
         }
     },
     mounted() {
-        window.addEventListener("scroll", this.onScroll);
-        console.log(document.getElementById("article1").offsetTop);
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.scrollY;
+        // window.addEventListener("scroll", this.onScroll);
+        // console.log(document.getElementById("article1").offsetTop);
+        // let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.scrollY;
     },
 }
 

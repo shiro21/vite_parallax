@@ -4,7 +4,7 @@ import main from '@/assets/js/data.js'
 </script>
 <template>
     <nav class="parallax_nav">
-        <ul>
+        <ul :class="{ list_active: listOpen }" v-smooth-scroll>
             <li :class="{ active: isActive === 1 }"><a href="#article1" v-smooth-scroll>s1</a></li>
             <li :class="{ active: isActive === 2 }"><a href="#article2" v-smooth-scroll>s2</a></li>
             <li :class="{ active: isActive === 3 }"><a href="#article3" v-smooth-scroll>s3</a></li>
@@ -23,16 +23,17 @@ import main from '@/assets/js/data.js'
 export default {
     data() {
         return {
-            isActive1: true,
-            isActive2: false,
-            isActive3: false,
-            isActive4: false,
-            isActive5: false,
-            isActive6: false,
-            isActive7: false,
-            isActive8: false,
-            isActive9: false,
-            isActive: 1
+            // isActive1: true,
+            // isActive2: false,
+            // isActive3: false,
+            // isActive4: false,
+            // isActive5: false,
+            // isActive6: false,
+            // isActive7: false,
+            // isActive8: false,
+            // isActive9: false,
+            isActive: 1,
+            listOpen: false
         }
     },
     created() {
@@ -46,11 +47,19 @@ export default {
        window.removeEventListener('scroll', this.onScroll)
     },
     methods: {
+        // 여기서부터 다시 해보기
         onScroll () {
             // console.log('스크롤중');
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            if (currentScrollPosition < 0) {
+
+            let lastScrollTop = 0;
+            if (currentScrollPosition <= 0) {
+                this.listOpen = false
                 return
+            } else if(currentScrollPosition > lastScrollTop) {
+                this.listOpen = true
+
+                lastScrollTop = currentScrollPosition
             }
 
             // 자바스크립트를 이용한 방법들
@@ -64,10 +73,12 @@ export default {
             //     }
             // })
 
+            
+
             for(let i = 0; i < main.length; i++) {
-                if(currentScrollPosition <= parseInt(document.getElementById("article"+ (i + 1)).offsetTop)) {
+                if(currentScrollPosition >= parseInt(document.getElementById("article"+ (i + 1)).offsetTop) - 1) {
                     this.isActive = i + 1;
-                    break;
+                    // break;
                 }
             }
             // if(currentScrollPosition <= parseInt(document.getElementById("article1").offsetTop)) {
@@ -103,8 +114,12 @@ export default {
         position: fixed;
         top: 20px;
         right: 20px;
+        overflow: hidden;
         z-index: 100;
         > ul {
+            position: relative;
+            top: -80px;
+            transition: all 1s;
             display: flex;
             padding: 20px;
             border-radius: 100px;
@@ -121,5 +136,6 @@ export default {
             }
             .active { background-color: #FFF; a { color: #222; } }
         }
+        .list_active { top: 0px; }
     }
 </style>
