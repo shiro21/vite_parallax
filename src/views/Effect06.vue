@@ -242,7 +242,7 @@ export default {
         opacity: 0;
         transform: translateX(-100px);
         transform: translateY(500px) rotate(50deg) skew(20deg);
-        transition: all 2s cubic-bezier(0, 0.24, 0, 0.55);
+        transition: all 2s cubic-bezier(0, 0.24, 1, 1.47);
         &:nth-child(even) {
             transform: translateX(100px);
             transform: translateY(500px) rotate(-50deg) skew(-20deg);
