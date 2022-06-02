@@ -31,6 +31,11 @@ const routes = [
         name: 'Effect05',
         component: () => import('@views/Effect05.vue'),
     },
+    {
+        path: '/effect06',
+        name: 'Effect06',
+        component: () => import('@views/Effect06.vue'),
+    },
 ]
 
 const router = createRouter({
