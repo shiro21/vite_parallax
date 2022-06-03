@@ -11,6 +11,7 @@ import Nav from '@components/Nav.vue'
     사용한 기술
     1. vue3-smooth-scroll ( 부드럽게 내려가는 효과 )
     2. javascript window, document, onScroll, parseInt
+    3. transform, transition을 사용하여 이펙트 효과를 주었음
  -->
     <Header />
     <section id="parallax_contents">
