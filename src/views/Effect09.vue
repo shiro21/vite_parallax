@@ -8,6 +8,7 @@ import { main } from '@/assets/js/data.js'
 </script>
 
 <template>
+<!-- jQuery 사용 -->
     <Info />
     <Header :headerTitle="headerTitle" />
     <Nav />
@@ -118,6 +119,27 @@ import { main } from '@/assets/js/data.js'
         transform: translateY(0) rotate(0) skew(0);
         transition: all 1s cubic-bezier(0, 0.24, 0, 0.55);
     }
+
+    .content_item_description {
+        span {
+            display: inline-block;
+            min-width: 1.1vw;
+            opacity: 0;
+            transform: translateY(32px) skew(30deg);
+            transition: all .33s ease-in-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0) skew(0);
+        }
+        .hide {
+            display: inline-block;
+            min-width: 1.1vw;
+            opacity: 0;
+            transform: translateY(32px) skew(30deg);
+            transition: all .33s ease-in-out;
+        }
+    }
 </style>
 
 <script>
@@ -127,8 +149,64 @@ export default {
             title: 'Parallax Effect - Layout 여기부터 제대로',
             subscription: '패럴랙스 스크롤링 효과'
         }
+
         return {
-            headerTitle: headerTitle
+            headerTitle: headerTitle,
+        }
+    },
+    mounted() {
+        window.addEventListener("scroll", this.scrollProgress)
+        // // jQuery 글씨 아웃라인처리 (단일)
+        // let text = $("#article1 .content_item_description").text()
+        // // 접근성 문제로 인해 aria-hidden사용
+        // let split = text.split('').join("</span><span aria-hidden='true'>")
+        // split = `<span aria-hidden='true'>${split}</span>`
+        // // 접근성 문제로 인해 aria-label을 사용해줌
+        // $("#article1 .content_item_description").html(split).attr("aria-label", text)
+
+        // $(window).scroll(function() {
+        //     if($(window).scrollTop() >= $("#article1").offset().top) {
+        //         $("#article1 .content_item_description").addClass("show")
+        //     }
+        // })
+
+        // 글씨 아웃라인 처리 (여러개)
+        $(".content_item_description").each(function() {
+            let text = $(this).text();
+            let split = text.split('').join("</span><span aria-hidden='true' class='hide'>");
+            split = `<span aria-hidden='true' class='hide'>${split}</span>`
+            $(this).html(split).attr("aria-label", text);
+        })
+
+        $(window).scroll(function() {
+            // $(".content_item_description").each(function() {
+            //     if($(window).scrollTop() >= $(this).offset().top - $(window).height() / 2) {
+            //         $(this).addClass("show")
+            //     }
+            // })
+
+
+        })
+    },
+    methods: {
+        scrollProgress() {
+            for(let i = 1; i <= $(".content_item").length; i++) {
+                if($(window).scrollTop() >= $("#article" + i).offset().top - $(window).height() / 2) {
+                    $("#article"+ i +" .content_item_description span").each((index) => {
+                        setTimeout(() => {
+                            $("#article"+ i +" .content_item_description span").eq(index).addClass("show")
+                            $("#article"+ i +" .content_item_description span").eq(index).removeClass("hide")
+                        }, 50 * index)
+                    })
+                } else {
+                    $("#article"+ i +" .content_item_description span").each((index) => {
+                        setTimeout(() => {
+                            $("#article"+ i +" .content_item_description span").eq(index).addClass("hide")
+                            $("#article"+ i +" .content_item_description span").eq(index).removeClass("show")
+                        }, 50 * index)
+                    })    
+                }
+            }
         }
     }
 }
