@@ -8,13 +8,13 @@ import { main } from '@/assets/js/data.js'
 </script>
 
 <template>
+<!-- 
+    1. gsap 텍스트 변경
+    2. gsap ease : https://greensock.com/ease-visualizer
+ -->
     <Info />
     <Header :headerTitle="headerTitle" />
     <Nav />
-
-    <transition appear @before-enter="beforeEnter" @enter="enter">
-        <span>dfakigjasdiofgjasiopfsj</span>
-    </transition>
 
     <section id="parallax_contents">
         <article :id="'article' + (index + 1)" class="content_item" v-for="(item, index) of main" :key="'a' + index">
@@ -38,6 +38,7 @@ import { main } from '@/assets/js/data.js'
 </style>
 
 <script>
+import gsap from 'gsap'
 
 export default {
     data() {
@@ -94,20 +95,20 @@ export default {
                 }
             }
         },
-        beforeEnter(el) {
-            console.log(el)
-            el.style.opacity = 0
-            el.style.transform = 'translateY(60px)'
-        },
-        enter(el) {
-            console.log(el)
-            gsap.to(el, {
-                opacity: 1,
-                y: 0,
-                stagger: .5,
-                duration: 2,
-            })
-        }
+        // beforeEnter(el) {
+        //     console.log(el)
+        //     el.style.opacity = 0
+        //     el.style.transform = 'translateY(60px)'
+        // },
+        // enter(el) {
+        //     console.log(el)
+        //     gsap.to(el, {
+        //         opacity: 1,
+        //         y: 0,
+        //         stagger: .5,
+        //         duration: 2,
+        //     })
+        // }
     }
 }
 </script>
