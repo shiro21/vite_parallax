@@ -93,11 +93,16 @@
 
 .content_item_description {
     span {
-        display: inline-block;
-        min-width: 1.1vw;
+        // display: inline-block;
+        // min-width: 1.1vw;
+        // opacity: 0;
+        // transform: translateY(32px) skew(30deg);
+        // transition: all .33s ease-in-out;
+
         opacity: 0;
-        transform: translateY(32px) skew(30deg);
-        transition: all .33s ease-in-out;
+        transform: translateY(50px) rotate(234deg);
+        display: inline-block;
+        min-width: 1vw;
     }
     .show {
         opacity: 1;

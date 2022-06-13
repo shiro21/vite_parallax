@@ -12,6 +12,10 @@ import { main } from '@/assets/js/data.js'
     <Header :headerTitle="headerTitle" />
     <Nav />
 
+    <transition appear @before-enter="beforeEnter" @enter="enter">
+        <span>dfakigjasdiofgjasiopfsj</span>
+    </transition>
+
     <section id="parallax_contents">
         <article :id="'article' + (index + 1)" class="content_item" v-for="(item, index) of main" :key="'a' + index">
             <span class="content_item_num">{{item.num}}</span>
@@ -21,7 +25,7 @@ import { main } from '@/assets/js/data.js'
             </figure>
             <!-- 웹표준을 지키기 위해서 aria-label과 aria-hidden을 사용 -->
             <p class="content_item_description split" :aria-label="item.description">
-                <span aria-hidden="true" v-for="(split, i) of item.description" :key="'b' + i">{{split}}</span>
+                <span appear @before-enter="beforeEnter" @enter="enter" aria-hidden="true" v-for="(split, i) of item.description" :key="'b' + i">{{split}}</span>
             </p>
         </article>
         <!-- article# // -->
@@ -34,6 +38,7 @@ import { main } from '@/assets/js/data.js'
 </style>
 
 <script>
+
 export default {
     data() {
         const headerTitle = {
@@ -56,21 +61,52 @@ export default {
             // 기본적인 보여주기
             for(let i = 1; i <= sectionId; i++) {
                 if(scrollTop > document.getElementById("article" + i).offsetTop) {
-                    setTimeout(() => {
-                        document.querySelectorAll("#article"+i+" .split span").forEach(el => {
-                            el.classList.add("show")
-                            el.classList.remove("hide")
-                        })
-                    }, 50 * i);
+                    // setTimeout(() => {
+                    //     document.querySelectorAll("#article"+i+" .split span").forEach(el => {
+                    //         el.classList.add("show")
+                    //         el.classList.remove("hide")
+                    //     })
+                    // }, 50 * i);
+
+                    gsap.to("#article"+i+" .split span", {
+                        duration: .5,
+                        opacity: 1,
+                        y: 0,
+                        stagger: .05,
+                        ease: "power4.out",
+                        rotation: 0
+                    })
                 } else {
-                    setTimeout(() => {
-                        document.querySelectorAll("#article"+i+" .split span").forEach(el => {
-                            el.classList.add("hide")
-                            el.classList.remove("show")
-                        })
-                    }, 50 * i);
+                    // setTimeout(() => {
+                    //     document.querySelectorAll("#article"+i+" .split span").forEach(el => {
+                    //         el.classList.add("hide")
+                    //         el.classList.remove("show")
+                    //     })
+                    // }, 50 * i);
+                    gsap.to("#article"+i+" .split span", {
+                        duration: .5,
+                        opacity: 0,
+                        y: 50,
+                        stagger: .05,
+                        ease: "power4.out",
+                        rotation: 234
+                    })
                 }
             }
+        },
+        beforeEnter(el) {
+            console.log(el)
+            el.style.opacity = 0
+            el.style.transform = 'translateY(60px)'
+        },
+        enter(el) {
+            console.log(el)
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                stagger: .5,
+                duration: 2,
+            })
         }
     }
 }
